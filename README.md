@@ -27,7 +27,7 @@ While f-strings can dynamically insert data into text, `PromptTemplate` provides
 | **Integration** | Fully compatible with LangChain ecosystem |
 
 ### **Example**
-python
+```python
 from langchain.prompts import PromptTemplate
 
 prompt = PromptTemplate(
@@ -68,7 +68,7 @@ The `invoke()` method sends prompts or message lists to the model.
 ---
 
 ### **Example — Multi-message Interaction**
-
+```python
 from langchain.schema import HumanMessage, SystemMessage
 
 messages = [
@@ -84,7 +84,7 @@ response = model.invoke(messages)
 
 ### **Example**
 
-
+```python
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import SystemMessage, HumanMessage
 
