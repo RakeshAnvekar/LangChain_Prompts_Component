@@ -126,7 +126,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
     MessagePlaceholder(variable_name="history"),  # Inject previous conversation
     HumanMessage(content="What is the status of my refund?")
 ])
-
+<img width="940" height="490" alt="image" src="https://github.com/user-attachments/assets/d5f9307f-3180-4730-94c9-890bcb2d52f3" />
 
 
 
