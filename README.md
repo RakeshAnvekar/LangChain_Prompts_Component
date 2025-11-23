@@ -70,7 +70,7 @@ The `invoke()` method sends prompts or message lists to the model.
 ---
 
 ### **Example — Multi-message Interaction**
-
+```python
 from langchain.schema import HumanMessage, SystemMessage
 
 messages = [
@@ -79,14 +79,14 @@ messages = [
 ]
 
 response = model.invoke(messages)
-
+```
 # 5. Dynamic Messages with `ChatPromptTemplate`
 
 `ChatPromptTemplate` allows you to create prompts that support dynamic variables and structured message formatting. This is useful when building chat-based workflows, where different roles (system, human, AI) need template-driven content.
 
 ### **Example**
 
-
+```python
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import SystemMessage, HumanMessage
 
@@ -94,6 +94,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
     SystemMessage(content="You are a helpful {domain} expert."),
     HumanMessage(content="Explain about {topic}.")
 ])
+```
 ## 6. Using `MessagePlaceholder`
 
 `MessagePlaceholder` is used to inject previous conversation history into a new prompt so the model can maintain context in a multi-turn conversation. Without this, LLMs treat each message independently and forget prior interactions.
@@ -117,7 +118,7 @@ By injecting history via `MessagePlaceholder`, the model sees the entire convers
 ---
 
 ### 🔧 Example
-
+```python
 
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.prompts.chat import MessagePlaceholder
@@ -128,7 +129,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
     MessagePlaceholder(variable_name="history"),  # Inject previous conversation
     HumanMessage(content="What is the status of my refund?")
 ])
-
+```
 ---
 
 ###  Dynamic Prompt
