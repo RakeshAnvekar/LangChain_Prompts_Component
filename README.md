@@ -28,6 +28,7 @@ While f-strings can dynamically insert data into text, `PromptTemplate` provides
 
 ### **Example**
 
+```python
 from langchain.prompts import PromptTemplate
 
 prompt = PromptTemplate(
@@ -35,6 +36,7 @@ prompt = PromptTemplate(
     template="Write a {length_input}-length summary of {paper_input} in {style_input} style.",
     validate_template=True
 )
+```
 # Messages in LangChain
 
 LangChain provides structured message types to support conversational AI workflows. Instead of sending raw text prompts, messages help instruct the model with clear roles and context.
