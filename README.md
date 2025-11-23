@@ -1,29 +1,32 @@
 # LangChain Prompting and Chat Message Guide
 
-This repository contains notes and examples related to **LangChain prompt templates, messages, and dynamic chat handling**.
+This repository contains notes and examples related to **LangChain prompt templates**, message handling, and dynamic chat interactions.
 
 ---
 
-## 1. Prompts in LLMs
+## **1. Introduction to Prompts in LLMs**
 
-Prompts are instructions or queries given to a model to guide its output. They are essential because the **output of an LLM depends directly on the prompts**.
+Prompts are instructions or queries given to a Large Language Model (LLM) to guide its output.  
+They are crucial because **the quality of the model’s output depends directly on how well prompts are designed**.
 
-### Types of Prompts
-1. **Text-based prompts**
+### **Types of Prompts**
+1. **Text-based prompts**  
 2. **Multi-modal prompts** (image, video, audio, etc.)
 
 ---
 
-### Why use `PromptTemplate` instead of f-strings?
+## **2. Why Use `PromptTemplate` Instead of f-strings?**
 
-While f-strings can be used for dynamic text insertion, `PromptTemplate` provides:
+While f-strings can dynamically insert data into text, `PromptTemplate` provides key advantages:
 
-- **Validation**: Built-in input validation using `validate_template=True`.
-- **Reusability**: Templates can be saved as JSON and reused across multiple prompts.
-- **Integration with LangChain**: Fully compatible with the ecosystem.
+### **Benefits of PromptTemplate**
+| Feature | Description |
+|---------|------------|
+| **Validation** | Built-in validation using `validate_template=True` |
+| **Reusability** | Templates can be stored as JSON and reused |
+| **Integration** | Fully compatible with LangChain ecosystem |
 
-Example:
-
+### **Example**
 ```python
 from langchain.prompts import PromptTemplate
 
@@ -32,27 +35,39 @@ prompt = PromptTemplate(
     template="Write a {length_input}-length summary of {paper_input} in {style_input} style.",
     validate_template=True
 )
+# Messages in LangChain
 
-## 2. Messages in LangChain
-
-LangChain supports three primary message types:
-
-| **Message Type** | **Description** | **Example** |
-|------------------|----------------|-------------|
-| **SystemMessage** | System-level instructions | `"You are a helpful assistant."` |
-| **HumanMessage**  | User input | `"Tell me the capital of India."` |
-| **AIMessage**     | Model response | `"The capital of India is New Delhi."` |
+LangChain provides structured message types to support conversational AI workflows. Instead of sending raw text prompts, messages help instruct the model with clear roles and context.
 
 ---
 
-## 3. Using the `invoke` Method
+## **3. Message Types in LangChain**
 
-The `invoke()` method is used to pass messages to the model.
+LangChain supports three primary message types:
 
-- **Single message** → For standalone prompts  
-- **List of messages** → Used in multi-turn chat
+| Message Type     | Purpose                     | Example                                           |
+|------------------|-----------------------------|---------------------------------------------------|
+| **SystemMessage** | Defines system-level instructions (rules, behavior). | `"You are a helpful assistant."` |
+| **HumanMessage**  | Represents user input.      | `"Tell me the capital of India."` |
+| **AIMessage**     | Represents model output.    | `"The capital of India is New Delhi."` |
 
-### **Example:**
+These messages allow structured control over a conversation, enabling multi-turn chat, role alignment, and better context management.
+
+---
+
+## **4. Using the `invoke()` Method**
+
+The `invoke()` method sends prompts or message lists to the model.
+
+### **When to Use**
+| Scenario | Usage |
+|----------|-------|
+| **Single query** | Send a single message |
+| **Multi-turn chat** | Pass a list of messages |
+
+---
+
+### **Example — Multi-message Interaction**
 
 ```python
 from langchain.schema import HumanMessage, SystemMessage
@@ -64,11 +79,13 @@ messages = [
 
 response = model.invoke(messages)
 
+# 5. Dynamic Messages with `ChatPromptTemplate`
 
-4. Dynamic Messages with ChatPromptTemplate
+`ChatPromptTemplate` allows you to create prompts that support dynamic variables and structured message formatting. This is useful when building chat-based workflows, where different roles (system, human, AI) need template-driven content.
 
-ChatPromptTemplate allows dynamic content in messages. For example:
+### **Example**
 
+```python
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import SystemMessage, HumanMessage
 
@@ -76,25 +93,4 @@ chat_prompt = ChatPromptTemplate.from_messages([
     SystemMessage(content="You are a helpful {domain} expert."),
     HumanMessage(content="Explain about {topic}.")
 ])
-MessagePlaceholder
 
-MessagePlaceholder is used to inject previous chat history or dynamic messages into a conversation.
-
-Example scenario:
-
-A user asks a chatbot for a refund.
-
-Chatbot responds: "Amount will be refunded in 3-5 working days."
-
-User comes back asking: "What is the status of my refund?"
-
-Solution: Use MessagePlaceholder to include the previous chat history in the new conversation.
-
-from langchain.prompts.chat import ChatPromptTemplate
-from langchain.prompts.chat import MessagePlaceholder
-
-chat_prompt = ChatPromptTemplate.from_messages([
-    SystemMessage(content="You are a helpful support assistant."),
-    MessagePlaceholder(variable_name="history"),  # Inject previous conversation
-    HumanMessage(content="What is the status of my refund?")
-])
