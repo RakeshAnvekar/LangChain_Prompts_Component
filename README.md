@@ -126,4 +126,28 @@ chat_prompt = ChatPromptTemplate.from_messages([
     MessagePlaceholder(variable_name="history"),  # Inject previous conversation
     HumanMessage(content="What is the status of my refund?")
 ])
+<img width="940" height="490" alt="image" src="https://github.com/user-attachments/assets/d5f9307f-3180-4730-94c9-890bcb2d52f3" />
+###  Dynamic Prompt
+<img width="940" height="490" alt="image" src="https://github.com/user-attachments/assets/d5f9307f-3180-4730-94c9-890bcb2d52f3" />
+### Basic ChatBot Without Context History
+<img width="940" height="552" alt="image" src="https://github.com/user-attachments/assets/7d47f788-1818-4ba9-9aa2-fd86064ddf25" />  
+<img width="940" height="491" alt="image" src="https://github.com/user-attachments/assets/82cb333a-e2a4-4110-a4cc-d65d7d508b7d" />
+### Basic ChatBot With Context History
+<img width="940" height="526" alt="image" src="https://github.com/user-attachments/assets/5b27f42d-597f-4664-bc4a-81ad6cda512b" />
+### Chat Bot with Chat History 
+    In below we are not able to find who has sent the message bot or user, its very difficult to llm model to understand
+<img width="940" height="526" alt="image" src="https://github.com/user-attachments/assets/9c10bb7e-bb1d-43db-a9f8-d9cea8a7b791" />
+### Chat Bot with Chat History -Human Message,AI Message,System Message
+<img width="940" height="489" alt="image" src="https://github.com/user-attachments/assets/2013d669-5eff-4bc2-b902-fc3fdaa2ada1" />
+### ChatPromptTemplate
+<img width="940" height="406" alt="image" src="https://github.com/user-attachments/assets/25a40645-0fee-4537-96b4-2bd0819a8d88" />
+### MessagePlaceHolder
+<img width="940" height="518" alt="image" src="https://github.com/user-attachments/assets/46f04f8d-d005-400c-a198-b7136f09df19" />
+
+
+
+
+
+
+
 
