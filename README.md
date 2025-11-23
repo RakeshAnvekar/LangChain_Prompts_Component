@@ -33,26 +33,28 @@ prompt = PromptTemplate(
     validate_template=True
 )
 
-2. Messages in LangChain
+## 2. Messages in LangChain
 
-LangChain supports three types of messages:
+LangChain supports three primary message types:
 
-SystemMessage – System-level instructions, e.g., "You are a helpful assistant."
+| **Message Type** | **Description** | **Example** |
+|------------------|----------------|-------------|
+| **SystemMessage** | System-level instructions | `"You are a helpful assistant."` |
+| **HumanMessage**  | User input | `"Tell me the capital of India."` |
+| **AIMessage**     | Model response | `"The capital of India is New Delhi."` |
 
-HumanMessage – Messages sent by the user, e.g., "Tell me the capital of India."
+---
 
-AIMessage – Responses from the model, e.g., "The capital of India is New Delhi."
+## 3. Using the `invoke` Method
 
-3. Using the invoke Method
+The `invoke()` method is used to pass messages to the model.
 
-The invoke method allows sending messages to the model:
+- **Single message** → For standalone prompts  
+- **List of messages** → Used in multi-turn chat
 
-Single message: Useful for standalone queries.
+### **Example:**
 
-List of messages: Used in multi-turn conversations.
-
-Example of static messages:
-
+```python
 from langchain.schema import HumanMessage, SystemMessage
 
 messages = [
@@ -61,6 +63,7 @@ messages = [
 ]
 
 response = model.invoke(messages)
+
 
 4. Dynamic Messages with ChatPromptTemplate
 
