@@ -69,7 +69,6 @@ The `invoke()` method sends prompts or message lists to the model.
 
 ### **Example — Multi-message Interaction**
 
-python
 from langchain.schema import HumanMessage, SystemMessage
 
 messages = [
@@ -85,7 +84,7 @@ response = model.invoke(messages)
 
 ### **Example**
 
-python
+
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import SystemMessage, HumanMessage
 
