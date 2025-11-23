@@ -119,7 +119,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
 ![Dynamic Prompt](https://github.com/user-attachments/assets/d5f9307f-3180-4730-94c9-890bcb2d52f3)
 
 ### Basic ChatBot Without Context History
-![Without History](https://github.com/user-attachments/assets/7d47f788-1818-4ba9-9aa5-fd86064ddf25)
+<img width="940" height="491" alt="image" src="https://github.com/user-attachments/assets/c44a55e2-d554-41a1-842a-089680fb8c8b" />
 
 ### Basic ChatBot With Context History
 ![With History](https://github.com/user-attachments/assets/5b27f42d-597f-4664-bc4a-81ad6cda512b)
