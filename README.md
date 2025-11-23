@@ -116,7 +116,7 @@ By injecting history via `MessagePlaceholder`, the model sees the entire convers
 
 ### 🔧 Example
 
-```python
+
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain.prompts.chat import MessagePlaceholder
 from langchain.schema import HumanMessage, SystemMessage
@@ -125,7 +125,7 @@ chat_prompt = ChatPromptTemplate.from_messages([
     SystemMessage(content="You are a helpful support assistant."),
     MessagePlaceholder(variable_name="history"),  # Inject previous conversation
     HumanMessage(content="What is the status of my refund?")
-])```
+])
 
 ---
 
