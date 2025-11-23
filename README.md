@@ -92,4 +92,38 @@ chat_prompt = ChatPromptTemplate.from_messages([
     SystemMessage(content="You are a helpful {domain} expert."),
     HumanMessage(content="Explain about {topic}.")
 ])
+## 6. Using `MessagePlaceholder`
+
+`MessagePlaceholder` is used to inject previous conversation history into a new prompt so the model can maintain context in a multi-turn conversation. Without this, LLMs treat each message independently and forget prior interactions.
+
+---
+
+### 📌 Scenario: Refund Support Conversation
+
+A user contacts support:
+
+| Role | Message |
+|------|---------|
+| **User** | "I need a refund." |
+| **Bot** | "Amount will be refunded in 3–5 working days." |
+| *(Later)* |
+| **User** | "What is the status of my refund?" |
+
+If we send only the final query, the model does not know what refund is being referenced.  
+By injecting history via `MessagePlaceholder`, the model sees the entire conversation and responds appropriately.
+
+---
+
+### 🔧 Example
+
+```python
+from langchain.prompts.chat import ChatPromptTemplate
+from langchain.prompts.chat import MessagePlaceholder
+from langchain.schema import HumanMessage, SystemMessage
+
+chat_prompt = ChatPromptTemplate.from_messages([
+    SystemMessage(content="You are a helpful support assistant."),
+    MessagePlaceholder(variable_name="history"),  # Inject previous conversation
+    HumanMessage(content="What is the status of my refund?")
+])
 
