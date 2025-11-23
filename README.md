@@ -27,7 +27,7 @@ While f-strings can dynamically insert data into text, `PromptTemplate` provides
 | **Integration** | Fully compatible with LangChain ecosystem |
 
 ### **Example**
-```python
+python
 from langchain.prompts import PromptTemplate
 
 prompt = PromptTemplate(
